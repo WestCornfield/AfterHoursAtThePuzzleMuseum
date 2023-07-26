@@ -191,6 +191,31 @@ screen LobbyRoomScreen():
             auto "inventory_button_%s"
             at open_inventory_button_location
             action [SensitiveIf(not inside_option), SetVariable("open_menu", False), SetVariable("open_inventory", True), SetVariable('active_action', ''), SetVariable('selected_item', ''), SetVariable('option_text', '')]
+    if open_inventory:
+        imagebutton:
+            idle "root_inventory_idle"
+            at root_inventory_menu_location
+        imagebutton:
+            idle "up_arrow_inventory_idle"
+            at up_arrow_inventory_location
+        imagebutton:
+            idle "down_arrow_inventory_idle"
+            at down_arrow_inventory_location
+        imagebutton:
+            idle "look_inventory_idle"
+            at look_inventory_location
+        imagebutton:
+            idle "use_inventory_idle"
+            at use_inventory_location
+        imagebutton:
+            idle "close_inventory_idle"
+            at close_inventory_location
+            action [SensitiveIf(in_room and not inside_option), SetVariable("open_inventory", False)]
+        for item in inventory:
+            imagebutton:
+                idle "{}_inventory_icon".format(item)
+                at inventory_spot(inventory.index(item))
+                action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]
 
 screen KeyholeExhibitRoomScreen():
     add "keyhole_exhibit_background"
@@ -223,3 +248,28 @@ screen KeyholeExhibitRoomScreen():
             auto "inventory_button_%s"
             at open_inventory_button_location
             action [SensitiveIf(not inside_option), SetVariable("open_menu", False), SetVariable("open_inventory", True), SetVariable('active_action', ''), SetVariable('selected_item', ''), SetVariable('option_text', '')]
+    if open_inventory:
+        imagebutton:
+            idle "root_inventory_idle"
+            at root_inventory_menu_location
+        imagebutton:
+            idle "up_arrow_inventory_idle"
+            at up_arrow_inventory_location
+        imagebutton:
+            idle "down_arrow_inventory_idle"
+            at down_arrow_inventory_location
+        imagebutton:
+            idle "look_inventory_idle"
+            at look_inventory_location
+        imagebutton:
+            idle "use_inventory_idle"
+            at use_inventory_location
+        imagebutton:
+            idle "close_inventory_idle"
+            at close_inventory_location
+            action [SensitiveIf(in_room and not inside_option), SetVariable("open_inventory", False)]
+        for item in inventory:
+            imagebutton:
+                idle "{}_inventory_icon".format(item)
+                at inventory_spot(inventory.index(item))
+                action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]
