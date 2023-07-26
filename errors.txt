@@ -1,0 +1,14 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/rooms.rpy", line 101: u'transform' is not a keyword argument or valid child for the add statement.
+    add "lobby_background" at transform:
+                                       ^
+
+File "game/rooms.rpy", line 135: Line is indented, but the preceding add statement does not expect a block. Please check this line's indentation.
+    at transform:
+    ^
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Wed Jul 26 13:24:41 2023
