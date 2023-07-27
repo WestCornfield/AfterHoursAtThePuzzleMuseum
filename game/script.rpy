@@ -78,6 +78,7 @@ label MyRoom:
     #Enter the scene
     $ in_room = False
     $ renpy.show_screen(current_room + "Screen")
+    $ renpy.show_screen("Inventory")
 
     #React to entrance
     if current_room != previous_room:

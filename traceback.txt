@@ -1,0 +1,72 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 45, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 84, in script call
+    $ check_intro_reactions(current_room)
+  File "game/script.rpy", line 189, in script
+    e "Front door's locked."
+  File "game/rooms.rpy", line 219, in execute
+    screen LobbyRoomScreen():
+  File "game/rooms.rpy", line 219, in execute
+    screen LobbyRoomScreen():
+  File "game/rooms.rpy", line 221, in execute
+    add Inventory
+  File "game/rooms.rpy", line 221, in <module>
+    add Inventory
+NameError: name 'Inventory' is not defined
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 45, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 84, in script call
+    $ check_intro_reactions(current_room)
+  File "game/script.rpy", line 189, in script
+    e "Front door's locked."
+  File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 721, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-7.4.11-sdk/renpy/exports.py", line 1419, in say
+    who(what, *args, **kwargs)
+  File "/Applications/renpy-7.4.11-sdk/renpy/character.py", line 1249, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "/Applications/renpy-7.4.11-sdk/renpy/character.py", line 901, in do_display
+    **display_args)
+  File "/Applications/renpy-7.4.11-sdk/renpy/character.py", line 647, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "/Applications/renpy-7.4.11-sdk/renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 3325, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 3737, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 568, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 568, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 568, in visit_all
+    d.visit_all(callback, seen)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 436, in visit_all
+    callback(self)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 3737, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 447, in per_interact
+    self.update()
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 637, in update
+    self.screen.function(**self.scope)
+  File "game/rooms.rpy", line 219, in execute
+    screen LobbyRoomScreen():
+  File "game/rooms.rpy", line 219, in execute
+    screen LobbyRoomScreen():
+  File "game/rooms.rpy", line 221, in execute
+    add Inventory
+  File "game/rooms.rpy", line 221, in <module>
+    add Inventory
+NameError: name 'Inventory' is not defined
+
+Darwin-22.5.0-x86_64-i386-64bit
+Ren'Py 7.4.11.2266
+After Hours at the Puzzle Museum 1.0
+Wed Jul 26 14:12:03 2023
