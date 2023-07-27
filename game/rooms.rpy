@@ -91,9 +91,11 @@ image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/pn
 
 #objects
 #lobby
-image keyhole_exhibit_background_door = im.FactorScale("objects/lobby_room_objects/Keyhole_Exhibit_Room_Door/png/Keybole_Exhibit_Room_With_Magazine.png", 0.5)
+image keyhole_exhibit_door = im.FactorScale("objects/lobby_room_objects/Keyhole_Exhibit_Room_Door/png/Keybole_Exhibit_Room_With_Magazine.png", 0.5)
 image office_door = im.FactorScale("objects/lobby_room_objects/Office_Door/png/Office_Door.png", 0.5)
 image debbie_desk = im.FactorScale("objects/lobby_room_objects/Debbie_Desk/png/Debbie_Desk.png", 0.5)
+image lost_box = im.FactorScale("objects/lobby_room_objects/Lost_Box/png/Lost_Box.png", 0.5)
+image car_room_door = im.FactorScale("objects/lobby_room_objects/Car_Room_Door/png/Car_Room_Door.png", 0.5)
 
 #UI inventory transforms
 transform dropdown_button_location:
@@ -173,6 +175,10 @@ transform lefthand_door_location:
     ypos 252
     xpos 136
 
+transform righthand_door_location:
+    ypos 252
+    xpos 1044
+
 transform office_door_location:
     ypos 216
     xpos 362
@@ -180,6 +186,10 @@ transform office_door_location:
 transform debbie_desk_location:
     ypos 340
     xpos 578
+
+transform lost_box_location:
+    ypos 244
+    xpos 768
 
 screen Inventory():
     if not open_menu and not open_inventory:
@@ -240,7 +250,7 @@ screen Inventory():
 screen LobbyRoomScreen():
     add "lobby_background"
     imagebutton:
-        idle "keyhole_exhibit_background_door"
+        idle "keyhole_exhibit_door"
         at lefthand_door_location
     imagebutton:
         idle "office_door"
@@ -248,6 +258,12 @@ screen LobbyRoomScreen():
     imagebutton:
         idle "debbie_desk"
         at debbie_desk_location
+    imagebutton:
+        idle "lost_box"
+        at lost_box_location
+    imagebutton:
+        idle "car_room_door"
+        at righthand_door_location
 
 screen KeyholeExhibitRoomScreen():
     add "keyhole_exhibit_background"
