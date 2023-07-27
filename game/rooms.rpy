@@ -93,6 +93,7 @@ image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/pn
 #lobby
 image keyhole_exhibit_background_door = im.FactorScale("objects/lobby_room_objects/Keyhole_Exhibit_Room_Door/png/Keybole_Exhibit_Room_With_Magazine.png", 0.5)
 image office_door = im.FactorScale("objects/lobby_room_objects/Office_Door/png/Office_Door.png", 0.5)
+image debbie_desk = im.FactorScale("objects/lobby_room_objects/Debbie_Desk/png/Debbie_Desk.png", 0.5)
 
 #UI inventory transforms
 transform dropdown_button_location:
@@ -176,6 +177,10 @@ transform office_door_location:
     ypos 216
     xpos 362
 
+transform debbie_desk_location:
+    ypos 340
+    xpos 578
+
 screen Inventory():
     if not open_menu and not open_inventory:
         imagebutton:
@@ -231,15 +236,18 @@ screen Inventory():
                 idle "{}_inventory_icon".format(item)
                 at inventory_spot(inventory.index(item))
                 action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]
+
+screen LobbyRoomScreen():
+    add "lobby_background"
     imagebutton:
         idle "keyhole_exhibit_background_door"
         at lefthand_door_location
     imagebutton:
         idle "office_door"
         at office_door_location
-
-screen LobbyRoomScreen():
-    add "lobby_background"
+    imagebutton:
+        idle "debbie_desk"
+        at debbie_desk_location
 
 screen KeyholeExhibitRoomScreen():
     add "keyhole_exhibit_background"
