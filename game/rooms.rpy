@@ -87,7 +87,7 @@ image nail_inventory_icon = "user_interface/inventory/icons/nail/idle/nail.png"
 #backgrounds
 #image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
 image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
-image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_nothing_placed.png", 0.5)
+image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_placed.png", 0.5)
 
 #objects
 #lobby
@@ -252,6 +252,7 @@ screen LobbyRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_door"
         at lefthand_door_location
+        action [SensitiveIf(in_room and not inside_option), Jump("KeyholeExhibitDoor")]
     imagebutton:
         idle "office_door"
         at office_door_location
@@ -265,5 +266,5 @@ screen LobbyRoomScreen():
         idle "car_room_door"
         at righthand_door_location
 
-screen KeyholeExhibitRoomScreen():
+screen KeyHoleExhibitRoomScreen():
     add "keyhole_exhibit_background"

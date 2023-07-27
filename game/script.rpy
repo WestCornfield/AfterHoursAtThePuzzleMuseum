@@ -178,6 +178,12 @@ label Magazine:
 
     jump MyRoom
 
+label KeyholeExhibitDoor:
+    e "You enter the door to the Keyhole Exhibit"
+    $ current_room = "KeyHoleExhibitRoom"
+
+    jump MyRoom
+
 label EnterKeyHoleExhibitRoom:
     e "You wake up in a mysterious room."
     e "You don't remember how you arrived here. But..."
