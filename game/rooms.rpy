@@ -88,6 +88,7 @@ image nail_inventory_icon = "user_interface/inventory/icons/nail/idle/nail.png"
 #image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
 image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
 image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_placed.png", 0.5)
+#image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_nothing_placed.png", 0.5)
 
 #objects
 #lobby
@@ -99,10 +100,10 @@ image car_room_door = im.FactorScale("objects/lobby_room_objects/Car_Room_Door/p
 
 #keyhole exhibit
 image keyhole_exhibit_plaque = im.FactorScale("objects/keyhole_exhibit_room_objects/Plaque/png/Plaque.png", 0.5)
-image keyhole_exhibit_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Wooden_Door/png/Closed_Door.png", 0.5)
+image keyhole_exhibit_locked_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Wooden_Door/png/Door_with_Lock.png", 0.5)
 image keyhole_exhibit_magazine_indicator = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine_Indicator/png/Magazine_Indicator.png", 0.5)
-image keyhole_exhibit_security_screen = im.FactorScale("objects/keyhole_exhibit_room_objects/Security_Screen/png/frame_01.png")
-image keyhole_exhibit_nail_file = im.FactorScale("objects/keyhole_exhibit_room_objects/Nail_File/png/Nail_File.png")
+image keyhole_exhibit_security_screen = im.FactorScale("objects/keyhole_exhibit_room_objects/Security_Screen/png/frame_01.png", 0.5)
+image keyhole_exhibit_nail_file = im.FactorScale("objects/keyhole_exhibit_room_objects/Nail_File/png/Nail_File.png", 0.5)
 image keyhole_exhibit_magazine = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine/png/magazine.png", 0.5)
 image lobby_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Lobby_Door/png/Door_To_Lobby.png", 0.5)
 
@@ -188,6 +189,10 @@ transform righthand_door_location:
     ypos 252
     xpos 1044
 
+transform righthand_door_location_2:
+    ypos 264
+    xpos 1070
+
 transform office_door_location:
     ypos 218
     xpos 362
@@ -199,6 +204,18 @@ transform debbie_desk_location:
 transform lost_box_location:
     ypos 244
     xpos 768
+
+transform plaque_location:
+    ypos 300
+    xpos 350
+
+transform keyhole_exhibit_locked_door_location:
+    ypos 220
+    xpos 530
+
+transform magazine_indicator_location:
+    ypos 530
+    xpos 595
 
 screen Inventory():
     if not open_menu and not open_inventory:
@@ -277,3 +294,15 @@ screen LobbyRoomScreen():
 
 screen KeyHoleExhibitRoomScreen():
     add "keyhole_exhibit_background"
+    imagebutton:
+        idle "keyhole_exhibit_plaque"
+        at plaque_location
+    imagebutton:
+        idle "lobby_door"
+        at righthand_door_location_2
+    imagebutton:
+        idle "keyhole_exhibit_locked_door"
+        at keyhole_exhibit_locked_door_location
+    imagebutton:
+        idle "keyhole_exhibit_magazine_indicator"
+        at magazine_indicator_location
