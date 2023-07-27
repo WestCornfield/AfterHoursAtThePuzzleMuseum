@@ -85,9 +85,16 @@ image broken_mirror_inventory_icon = "user_interface/inventory/icons/broken_mirr
 image nail_inventory_icon = "user_interface/inventory/icons/nail/idle/nail.png"
 
 #backgrounds
-image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
+#image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
+image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby.png", 0.5)
 image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_nothing_placed.png", 0.5)
 
+#objects
+#lobby
+image keyhole_exhibit_background_door = im.FactorScale("objects/lobby_room_objects/Keyhole_Exhibit_Room_Door/png/Keybole_Exhibit_Room_With_Magazine.png", 0.5)
+image office_door = im.FactorScale("objects/lobby_room_objects/Office_Door/png/Office_Door.png", 0.5)
+
+#UI inventory transforms
 transform dropdown_button_location:
     ypos 0
     xpos 568
@@ -160,6 +167,15 @@ transform option_text_location:
     xalign 0.5
     yalign 0.95
 
+#object transforms
+transform lefthand_door_location:
+    ypos 252
+    xpos 136
+
+transform office_door_location:
+    ypos 216
+    xpos 362
+
 screen Inventory():
     if not open_menu and not open_inventory:
         imagebutton:
@@ -215,7 +231,12 @@ screen Inventory():
                 idle "{}_inventory_icon".format(item)
                 at inventory_spot(inventory.index(item))
                 action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]
-
+    imagebutton:
+        idle "keyhole_exhibit_background_door"
+        at lefthand_door_location
+    imagebutton:
+        idle "office_door"
+        at office_door_location
 
 screen LobbyRoomScreen():
     add "lobby_background"
