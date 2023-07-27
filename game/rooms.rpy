@@ -86,7 +86,7 @@ image nail_inventory_icon = "user_interface/inventory/icons/nail/idle/nail.png"
 
 #backgrounds
 #image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
-image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby.png", 0.5)
+image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
 image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_nothing_placed.png", 0.5)
 
 #objects
@@ -180,7 +180,7 @@ transform righthand_door_location:
     xpos 1044
 
 transform office_door_location:
-    ypos 216
+    ypos 218
     xpos 362
 
 transform debbie_desk_location:
