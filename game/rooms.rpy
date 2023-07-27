@@ -97,6 +97,15 @@ image debbie_desk = im.FactorScale("objects/lobby_room_objects/Debbie_Desk/png/D
 image lost_box = im.FactorScale("objects/lobby_room_objects/Lost_Box/png/Lost_Box.png", 0.5)
 image car_room_door = im.FactorScale("objects/lobby_room_objects/Car_Room_Door/png/Car_Room_Door.png", 0.5)
 
+#keyhole exhibit
+image keyhole_exhibit_plaque = im.FactorScale("objects/keyhole_exhibit_room_objects/Plaque/png/Plaque.png", 0.5)
+image keyhole_exhibit_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Wooden_Door/png/Closed_Door.png", 0.5)
+image keyhole_exhibit_magazine_indicator = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine_Indicator/png/Magazine_Indicator.png", 0.5)
+image keyhole_exhibit_security_screen = im.FactorScale("objects/keyhole_exhibit_room_objects/Security_Screen/png/frame_01.png")
+image keyhole_exhibit_nail_file = im.FactorScale("objects/keyhole_exhibit_room_objects/Nail_File/png/Nail_File.png")
+image keyhole_exhibit_magazine = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine/png/magazine.png", 0.5)
+image lobby_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Lobby_Door/png/Door_To_Lobby.png", 0.5)
+
 #UI inventory transforms
 transform dropdown_button_location:
     ypos 0
