@@ -1,38 +1,38 @@
-Thu Jul 27 17:42:16 2023
+Thu Jul 27 18:54:45 2023
 Darwin-22.5.0-x86_64-i386-64bit
 Ren'Py 7.4.11.2266
  
 
-Bootstrap to the start of init.init took 0.10s
-Early init took 0.07s
-Loader init took 0.04s
-Loading error handling took 0.02s
-Loading script took 0.13s
-Loading save slot metadata. took 0.02s
+Bootstrap to the start of init.init took 0.09s
+Early init took 0.01s
+Loader init took 0.02s
+Loading error handling took 0.04s
+Loading script took 0.24s
+Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.05s
-Loading analysis data took 0.03s
+Running init code took 0.06s
+Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Dump and make backups. took 0.06s
+Dump and make backups. took 0.05s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.02s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
 Load screen analysis took 0.02s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.07s
+Prepare screens took 0.11s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
+Save bytecode. took 0.02s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.83s
+Interface start took 0.76s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1440, 900)
@@ -44,156 +44,73 @@ Version: '2.1 INTEL-20.6.1'
 Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
 Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 44.55s
-Early init took 0.00s
-Loader init took 0.03s
-Loading error handling took 0.03s
-Loading script took 0.19s
-Loading save slot metadata. took 0.01s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.04s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
-Dump and make backups. took 0.07s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.04s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.03s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.04s
-Save bytecode. took 0.01s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.16s
 
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel Inc.'
-Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
-Version: '2.1 INTEL-20.6.1'
-Display Info: None
-Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
-Maximum texture size: 4096x4096
+Full traceback:
+  File "game/script.rpy", line 45, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 94, in script
+    $ renpy.call_screen(current_room + "Screen")
+  File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 928, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2245, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 94, in <module>
+    $ renpy.call_screen(current_room + "Screen")
+  File "/Applications/renpy-7.4.11-sdk/renpy/exports.py", line 3131, in call_screen
+    show_screen(_screen_name, _transient=True, *args, **kwargs)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 1164, in show_screen
+    sls.add(_layer, d, _tag, zorder=_zorder, transient=_transient, keep_st=True, name=name)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1117, in add
+    if not self.hide_or_replace(layer, remove_index, "replaced"):
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1170, in hide_or_replace
+    if not oldsle.displayable._handles_event(prefix):
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 484, in _handles_event
+    self.update()
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 637, in update
+    self.screen.function(**self.scope)
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 306, in execute
+    imagebutton:
+  File "game/rooms.rpy", line 306, in keywords
+    imagebutton:
+  File "game/rooms.rpy", line 308, in <module>
+    at keyhole_exhibit_lock_location
+NameError: name 'keyhole_exhibit_lock_location' is not defined
+
+While running game code:
+  File "game/script.rpy", line 45, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 94, in script
+    $ renpy.call_screen(current_room + "Screen")
+  File "game/script.rpy", line 94, in <module>
+    $ renpy.call_screen(current_room + "Screen")
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 306, in execute
+    imagebutton:
+  File "game/rooms.rpy", line 306, in keywords
+    imagebutton:
+  File "game/rooms.rpy", line 308, in <module>
+    at keyhole_exhibit_lock_location
+NameError: name 'keyhole_exhibit_lock_location' is not defined
 Resetting cache.
-Bootstrap to the start of init.init took 55.69s
+Bootstrap to the start of init.init took 31.39s
 Early init took 0.00s
-Loader init took 0.03s
+Loader init took 0.02s
 Loading error handling took 0.02s
-Loading script took 0.15s
+Loading script took 0.10s
 Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.04s
+Running init code took 0.03s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
-Dump and make backups. took 0.07s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.04s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.01s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.03s
-Prepare screens took 0.06s
-Save pyanalysis. took 0.03s
-Save bytecode. took 0.01s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.13s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel Inc.'
-Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
-Version: '2.1 INTEL-20.6.1'
-Display Info: None
-Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 156.49s
-Early init took 0.00s
-Loader init took 0.09s
-Loading error handling took 0.05s
-Loading script took 0.47s
-Loading save slot metadata. took 0.07s
-Loading persistent took 0.00s
-
-File "game/rooms.rpy", line 216: expected ':' not found.
-    transform magazine_indicator_location
-                                         ^
-DPI scale factor: 1.000000
-Interface start took 0.36s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel Inc.'
-Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
-Version: '2.1 INTEL-20.6.1'
-Display Info: None
-Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 169.33s
-Early init took 0.00s
-Loader init took 0.04s
-Loading error handling took 0.02s
-Loading script took 0.15s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-
-File "game/rooms.rpy", line 216: expected ':' not found.
-    transform magazine_indicator_location
-                                         ^
-DPI scale factor: 1.000000
-Interface start took 0.19s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel Inc.'
-Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
-Version: '2.1 INTEL-20.6.1'
-Display Info: None
-Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 171.10s
-Early init took 0.00s
-Loader init took 0.03s
-Loading error handling took 0.03s
-Loading script took 0.13s
-Loading save slot metadata. took 0.01s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
 Dump and make backups. took 0.06s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
@@ -201,14 +118,14 @@ Initial gc. took 0.03s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.03s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.03s
-Save bytecode. took 0.01s
+Init translation took 0.04s
+Build styles took 0.01s
+Load screen analysis took 0.02s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
 Running _start took 0.00s
 Performance test:
 Interface start took 0.13s
@@ -235,100 +152,74 @@ Full traceback:
     exec(bytecode, globals, locals)
   File "game/script.rpy", line 94, in <module>
     $ renpy.call_screen(current_room + "Screen")
-  File "/Applications/renpy-7.4.11-sdk/renpy/exports.py", line 3136, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "/Applications/renpy-7.4.11-sdk/renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 3325, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 3839, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 2565, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 688, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/transform.py", line 733, in render
-    return transform_render(self, width, height, st, at)
-  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/behavior.py", line 795, in render
-    rv = super(Button, self).render(width, height, st, at)
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/layout.py", line 1264, in render
-    st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/image.py", line 501, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/image.py", line 307, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/im.py", line 625, in render
-    return cache.get(self, render=True)
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/im.py", line 287, in get
-    surf = image.load()
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/im.py", line 934, in load
-    surf = cache.get(self.image)
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/im.py", line 287, in get
-    surf = image.load()
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/im.py", line 706, in load
-    raise e
-IOError: Couldn't find file 'objects/keyhole_exhibit_room_objects/Magazine_Indicator/png/Magazine_Indicator.png'.
+  File "/Applications/renpy-7.4.11-sdk/renpy/exports.py", line 3131, in call_screen
+    show_screen(_screen_name, _transient=True, *args, **kwargs)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 1164, in show_screen
+    sls.add(_layer, d, _tag, zorder=_zorder, transient=_transient, keep_st=True, name=name)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1117, in add
+    if not self.hide_or_replace(layer, remove_index, "replaced"):
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1170, in hide_or_replace
+    if not oldsle.displayable._handles_event(prefix):
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 484, in _handles_event
+    self.update()
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 637, in update
+    self.screen.function(**self.scope)
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 306, in execute
+    imagebutton:
+  File "game/rooms.rpy", line 306, in keywords
+    imagebutton:
+  File "game/rooms.rpy", line 308, in <module>
+    at keyhole_exhibit_lock_location
+NameError: name 'keyhole_exhibit_lock_location' is not defined
 
-While loading <'FactorScale' <'Image' u'objects/keyhole_exhibit_room_objects/Magazine_Indicator/png/Magazine_Indicator.png'> 0.5 0.5 True>:
+While running game code:
   File "game/script.rpy", line 45, in script call
     call MyRoom from _call_MyRoom
   File "game/script.rpy", line 94, in script
     $ renpy.call_screen(current_room + "Screen")
   File "game/script.rpy", line 94, in <module>
     $ renpy.call_screen(current_room + "Screen")
-IOError: Couldn't find file 'objects/keyhole_exhibit_room_objects/Magazine_Indicator/png/Magazine_Indicator.png'.
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 306, in execute
+    imagebutton:
+  File "game/rooms.rpy", line 306, in keywords
+    imagebutton:
+  File "game/rooms.rpy", line 308, in <module>
+    at keyhole_exhibit_lock_location
+NameError: name 'keyhole_exhibit_lock_location' is not defined
 Resetting cache.
-Bootstrap to the start of init.init took 220.83s
+Bootstrap to the start of init.init took 34.63s
 Early init took 0.00s
-Loader init took 0.03s
+Loader init took 0.02s
 Loading error handling took 0.02s
-Loading script took 0.11s
-Loading save slot metadata. took 0.02s
+Loading script took 0.07s
+Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.12s
+Running init code took 0.04s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Dump and make backups. took 0.06s
+Dump and make backups. took 0.05s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.04s
+Initial gc. took 0.03s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.05s
+Init translation took 0.04s
 Build styles took 0.01s
-Load screen analysis took 0.03s
+Load screen analysis took 0.02s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.08s
+Prepare screens took 0.06s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
 Running _start took 0.00s
@@ -345,16 +236,353 @@ Version: '2.1 INTEL-20.6.1'
 Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
 Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 45, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 94, in script
+    $ renpy.call_screen(current_room + "Screen")
+  File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 928, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2245, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 94, in <module>
+    $ renpy.call_screen(current_room + "Screen")
+  File "/Applications/renpy-7.4.11-sdk/renpy/exports.py", line 3131, in call_screen
+    show_screen(_screen_name, _transient=True, *args, **kwargs)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 1164, in show_screen
+    sls.add(_layer, d, _tag, zorder=_zorder, transient=_transient, keep_st=True, name=name)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1117, in add
+    if not self.hide_or_replace(layer, remove_index, "replaced"):
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1170, in hide_or_replace
+    if not oldsle.displayable._handles_event(prefix):
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 484, in _handles_event
+    self.update()
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 637, in update
+    self.screen.function(**self.scope)
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 306, in execute
+    imagebutton:
+  File "game/rooms.rpy", line 306, in keywords
+    imagebutton:
+  File "game/rooms.rpy", line 308, in <module>
+    at keyhole_exhibit_lock_location
+NameError: name 'keyhole_exhibit_lock_location' is not defined
+
+While running game code:
+  File "game/script.rpy", line 45, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 94, in script
+    $ renpy.call_screen(current_room + "Screen")
+  File "game/script.rpy", line 94, in <module>
+    $ renpy.call_screen(current_room + "Screen")
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 295, in execute
+    screen KeyHoleExhibitRoomScreen():
+  File "game/rooms.rpy", line 306, in execute
+    imagebutton:
+  File "game/rooms.rpy", line 306, in keywords
+    imagebutton:
+  File "game/rooms.rpy", line 308, in <module>
+    at keyhole_exhibit_lock_location
+NameError: name 'keyhole_exhibit_lock_location' is not defined
 Resetting cache.
-Bootstrap to the start of init.init took 242.41s
+Bootstrap to the start of init.init took 76.09s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.20s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+
+File "game/rooms.rpy", line 216: expected ':' not found.
+    transform keyhole_exhibit_lock_location
+                                           ^
+DPI scale factor: 1.000000
+Interface start took 0.16s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 88.96s
+Early init took 0.00s
+Loader init took 0.02s
+Loading error handling took 0.03s
+Loading script took 0.18s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.03s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 143.37s
+Early init took 0.00s
+Loader init took 0.02s
+Loading error handling took 0.02s
+Loading script took 0.16s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.12s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 195.76s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.16s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.12s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 208.60s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.01s
+Loading script took 0.11s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.12s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 217.53s
+Early init took 0.00s
+Loader init took 0.02s
+Loading error handling took 0.01s
+Loading script took 0.12s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.12s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 551.42s
 Early init took 0.00s
 Loader init took 0.03s
 Loading error handling took 0.02s
 Loading script took 0.17s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.04s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.16s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 570.56s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.15s
 Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
+Running init code took 0.05s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
@@ -372,11 +600,11 @@ Load screen analysis took 0.00s
 Analyze screens took 0.02s
 Save screen analysis took 0.03s
 Prepare screens took 0.08s
-Save pyanalysis. took 0.03s
+Save pyanalysis. took 0.04s
 Save bytecode. took 0.01s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.13s
+Interface start took 0.12s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1440, 900)
@@ -389,15 +617,58 @@ Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init took 262.55s
+Bootstrap to the start of init.init took 577.74s
 Early init took 0.00s
-Loader init took 0.02s
-Loading error handling took 0.02s
-Loading script took 0.17s
-Loading save slot metadata. took 0.02s
+Loader init took 0.03s
+Loading error handling took 0.01s
+Loading script took 0.12s
+Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
+Running init code took 0.05s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.06s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 587.27s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.11s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
@@ -405,14 +676,100 @@ Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAt
 Dump and make backups. took 0.06s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.04s
+Initial gc. took 0.06s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.05s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 596.64s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.13s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.05s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.12s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 604.14s
+Early init took 0.00s
+Loader init took 0.08s
+Loading error handling took 0.07s
+Loading script took 0.39s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.06s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.06s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.05s
-Build styles took 0.01s
+Build styles took 0.00s
 Load screen analysis took 0.00s
-Analyze screens took 0.01s
+Analyze screens took 0.02s
 Save screen analysis took 0.03s
 Prepare screens took 0.07s
 Save pyanalysis. took 0.04s
@@ -432,37 +789,37 @@ Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init took 290.41s
-Early init took 0.00s
+Bootstrap to the start of init.init took 612.80s
+Early init took 0.01s
 Loader init took 0.03s
 Loading error handling took 0.02s
 Loading script took 0.18s
 Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
+Running init code took 0.06s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
 Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
-Dump and make backups. took 0.06s
+Dump and make backups. took 0.07s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.04s
+Initial gc. took 0.05s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.01s
+Init translation took 0.05s
+Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.03s
-Prepare screens took 0.09s
-Save pyanalysis. took 0.05s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.04s
 Save bytecode. took 0.01s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.12s
+Interface start took 0.13s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1440, 900)
@@ -475,15 +832,15 @@ Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init took 299.89s
+Bootstrap to the start of init.init took 799.32s
 Early init took 0.00s
-Loader init took 0.02s
+Loader init took 0.04s
 Loading error handling took 0.02s
-Loading script took 0.11s
-Loading save slot metadata. took 0.01s
+Loading script took 0.16s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.11s
+Running init code took 0.04s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
@@ -496,7 +853,93 @@ DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.05s
-Build styles took 0.01s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.08s
+Save pyanalysis. took 0.05s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.13s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 837.32s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.15s
+Loading save slot metadata. took 0.02s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 855.79s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.11s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.06s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.02s
 Save screen analysis took 0.03s
@@ -518,37 +961,37 @@ Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init took 312.41s
+Bootstrap to the start of init.init took 870.30s
 Early init took 0.00s
-Loader init took 0.03s
+Loader init took 0.02s
 Loading error handling took 0.02s
-Loading script took 0.13s
+Loading script took 0.12s
 Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.14s
-Loading analysis data took 0.03s
-Analyze and compile ATL took 0.01s
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.03s
 Index archives took 0.00s
 Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
 Dump and make backups. took 0.06s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.06s
+Initial gc. took 0.05s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.06s
-Build styles took 0.01s
+Init translation took 0.05s
+Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.02s
-Save screen analysis took 0.04s
-Prepare screens took 0.08s
-Save pyanalysis. took 0.04s
+Save screen analysis took 0.03s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.03s
 Save bytecode. took 0.01s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.12s
+Interface start took 0.11s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1440, 900)
@@ -561,15 +1004,144 @@ Display Info: None
 Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init took 329.59s
+Bootstrap to the start of init.init took 877.84s
 Early init took 0.00s
-Loader init took 0.02s
+Loader init took 0.03s
 Loading error handling took 0.02s
-Loading script took 0.17s
+Loading script took 0.11s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.13s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 891.64s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.12s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.05s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 909.16s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.02s
+Loading script took 0.16s
 Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.11s
+Running init code took 0.06s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.07s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.07s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.01s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-20.6.1'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init took 919.06s
+Early init took 0.00s
+Loader init took 0.03s
+Loading error handling took 0.01s
+Loading script took 0.11s
+Loading save slot metadata. took 0.01s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
@@ -587,140 +1159,11 @@ Load screen analysis took 0.00s
 Analyze screens took 0.02s
 Save screen analysis took 0.03s
 Prepare screens took 0.06s
-Save pyanalysis. took 0.03s
+Save pyanalysis. took 0.04s
 Save bytecode. took 0.01s
 Running _start took 0.00s
 Performance test:
-Interface start took 0.12s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel Inc.'
-Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
-Version: '2.1 INTEL-20.6.1'
-Display Info: None
-Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 343.69s
-Early init took 0.00s
-Loader init took 0.03s
-Loading error handling took 0.02s
-Loading script took 0.13s
-Loading save slot metadata. took 0.01s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.12s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
-Dump and make backups. took 0.06s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.04s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.06s
-Build styles took 0.01s
-Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.03s
-Prepare screens took 0.08s
-Save pyanalysis. took 0.03s
-Save bytecode. took 0.01s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.12s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel Inc.'
-Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
-Version: '2.1 INTEL-20.6.1'
-Display Info: None
-Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 362.34s
-Early init took 0.00s
-Loader init took 0.03s
-Loading error handling took 0.02s
-Loading script took 0.16s
-Loading save slot metadata. took 0.02s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
-Dump and make backups. took 0.07s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.04s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.03s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.03s
-Save bytecode. took 0.01s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.11s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1440, 900)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'Intel Inc.'
-Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
-Version: '2.1 INTEL-20.6.1'
-Display Info: None
-Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
-Maximum texture size: 4096x4096
-Resetting cache.
-Bootstrap to the start of init.init took 368.85s
-Early init took 0.00s
-Loader init took 0.02s
-Loading error handling took 0.02s
-Loading script took 0.15s
-Loading save slot metadata. took 0.01s
-Loading persistent took 0.00s
-Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.13s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.01s
-Index archives took 0.00s
-Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
-Dump and make backups. took 0.06s
-Cleaning cache took 0.00s
-Making clean stores took 0.00s
-Initial gc. took 0.04s
-DPI scale factor: 1.000000
-Creating interface object took 0.00s
-Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.03s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.03s
-Save bytecode. took 0.01s
-Running _start took 0.00s
-Performance test:
-Interface start took 0.11s
+Interface start took 0.13s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1440, 900)
