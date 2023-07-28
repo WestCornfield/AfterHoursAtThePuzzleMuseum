@@ -314,7 +314,7 @@ screen LobbyRoomScreen():
         idle "car_room_door"
         at righthand_door_location
 
-screen KeyHoleExhibitRoomScreen():
+screen KeyholeExhibitRoomScreen():
     add "keyhole_exhibit_background"
     imagebutton:
         idle "keyhole_exhibit_plaque"
@@ -322,6 +322,7 @@ screen KeyHoleExhibitRoomScreen():
     imagebutton:
         idle "lobby_door"
         at righthand_door_location_2
+        action [SensitiveIf(in_room and not inside_option), Jump("LobbyDoor")]
     imagebutton:
         idle "keyhole_exhibit_locked_door"
         at keyhole_exhibit_locked_door_location

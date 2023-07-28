@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/rooms.rpy", line 216: expected ':' not found.
-    transform keyhole_exhibit_lock_location
-                                           ^
+File "game/game_functions.rpy", line 11: invalid syntax
+        else if room == "KeyholeExhibitRoom":
+               ^
+    
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Thu Jul 27 18:56:01 2023
+Thu Jul 27 19:27:39 2023

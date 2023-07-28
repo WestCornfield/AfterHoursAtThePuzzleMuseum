@@ -180,11 +180,17 @@ label Magazine:
 
 label KeyholeExhibitDoor:
     e "You enter the door to the Keyhole Exhibit"
-    $ current_room = "KeyHoleExhibitRoom"
+    $ current_room = "KeyholeExhibitRoom"
 
     jump MyRoom
 
-label EnterKeyHoleExhibitRoom:
+label LobbyDoor:
+    e "You enter the door to the Lobby"
+    $ current_room = "LobbyRoom"
+
+    jump MyRoom
+
+label EnterKeyholeExhibitRoom:
     e "You wake up in a mysterious room."
     e "You don't remember how you arrived here. But..."
     e "Or, perhaps, *because* you can't remember..."

@@ -8,7 +8,7 @@ init python:
     def check_intro_reactions(room):
         if room == "LobbyRoom":
             renpy.call("EnterLobbyRoom")
-        if room == "KeyholeExhibitRoom":
+        elif room == "KeyholeExhibitRoom":
             renpy.call("EnterKeyholeExhibitRoom")
         return
 
