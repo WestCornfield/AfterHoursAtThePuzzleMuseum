@@ -87,7 +87,7 @@ image nail_inventory_icon = "user_interface/inventory/icons/nail/idle/nail.png"
 #backgrounds
 #image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
 image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
-image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_placed.png", 0.5)
+image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_nothing_placed.png", 0.5)
 #image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/png/Keyhole_Exhibit_Room_nothing_placed.png", 0.5)
 
 #objects
@@ -231,6 +231,14 @@ transform keyhole_exhibit_table_location:
     ypos 445
     xpos 782
 
+transform keyhole_exhibit_nail_file_location:
+    ypos 434
+    xpos 820
+
+transform keyhole_exhibit_magazine_location:
+    ypos 400
+    xpos 850
+
 screen Inventory():
     if not open_menu and not open_inventory:
         imagebutton:
@@ -329,3 +337,9 @@ screen KeyHoleExhibitRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_table"
         at keyhole_exhibit_table_location
+    imagebutton:
+        idle "keyhole_exhibit_nail_file"
+        at keyhole_exhibit_nail_file_location
+    imagebutton:
+        idle "keyhole_exhibit_magazine"
+        at keyhole_exhibit_magazine_location

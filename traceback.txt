@@ -1,23 +1,13 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
+Compiling ATL code at game/rooms.rpy:239
   File "game/script.rpy", line 45, in script call
     call MyRoom from _call_MyRoom
   File "game/script.rpy", line 94, in script
     $ renpy.call_screen(current_room + "Screen")
   File "game/script.rpy", line 94, in <module>
     $ renpy.call_screen(current_room + "Screen")
-  File "game/rooms.rpy", line 295, in execute
-    screen KeyHoleExhibitRoomScreen():
-  File "game/rooms.rpy", line 295, in execute
-    screen KeyHoleExhibitRoomScreen():
-  File "game/rooms.rpy", line 306, in execute
-    imagebutton:
-  File "game/rooms.rpy", line 306, in keywords
-    imagebutton:
-  File "game/rooms.rpy", line 308, in <module>
-    at keyhole_exhibit_lock_location
-NameError: name 'keyhole_exhibit_lock_location' is not defined
+NameError: name 'ypos' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -38,25 +28,28 @@ Full traceback:
     sls.add(_layer, d, _tag, zorder=_zorder, transient=_transient, keep_st=True, name=name)
   File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1117, in add
     if not self.hide_or_replace(layer, remove_index, "replaced"):
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1170, in hide_or_replace
-    if not oldsle.displayable._handles_event(prefix):
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 484, in _handles_event
-    self.update()
-  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 637, in update
-    self.screen.function(**self.scope)
-  File "game/rooms.rpy", line 295, in execute
-    screen KeyHoleExhibitRoomScreen():
-  File "game/rooms.rpy", line 295, in execute
-    screen KeyHoleExhibitRoomScreen():
-  File "game/rooms.rpy", line 306, in execute
-    imagebutton:
-  File "game/rooms.rpy", line 306, in keywords
-    imagebutton:
-  File "game/rooms.rpy", line 308, in <module>
-    at keyhole_exhibit_lock_location
-NameError: name 'keyhole_exhibit_lock_location' is not defined
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/core.py", line 1175, in hide_or_replace
+    d = oldsle.displayable._in_current_store()._hide(now - st, now - at, prefix)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 532, in _hide
+    c = d._hide(st, at, kind)
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/transform.py", line 646, in _hide
+    self.update_state()
+  File "/Applications/renpy-7.4.11-sdk/renpy/display/transform.py", line 908, in update_state
+    fr = self.execute(self, self.st, self.at)
+  File "/Applications/renpy-7.4.11-sdk/renpy/atl.py", line 542, in execute
+    block = self.compile()
+  File "/Applications/renpy-7.4.11-sdk/renpy/atl.py", line 510, in compile
+    block = self.atl.compile(self.context)
+  File "/Applications/renpy-7.4.11-sdk/renpy/atl.py", line 705, in compile
+    statements = [ i.compile(ctx) for i in self.statements ]
+  File "/Applications/renpy-7.4.11-sdk/renpy/atl.py", line 957, in compile
+    value = ctx.eval(expr)
+  File "/Applications/renpy-7.4.11-sdk/renpy/atl.py", line 260, in eval
+    return eval(expr, renpy.store.__dict__, self.context) # @UndefinedVariable
+  File "<string>", line 1, in <module>
+NameError: name 'ypos' is not defined
 
 Darwin-22.5.0-x86_64-i386-64bit
 Ren'Py 7.4.11.2266
 After Hours at the Puzzle Museum 1.0
-Thu Jul 27 18:55:20 2023
+Thu Jul 27 19:18:05 2023
