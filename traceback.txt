@@ -3,11 +3,11 @@
 While running game code:
   File "game/script.rpy", line 45, in script call
     call MyRoom from _call_MyRoom
-  File "game/script.rpy", line 80, in script
-    $ renpy.show_screen(current_room + "Screen")
-  File "game/script.rpy", line 80, in <module>
-    $ renpy.show_screen(current_room + "Screen")
-Exception: Screen KeyholeExhibitRoomScreen is not known.
+  File "game/script.rpy", line 81, in script
+    $ renpy.show_screen("Inventory")
+  File "game/script.rpy", line 81, in <module>
+    $ renpy.show_screen("Inventory")
+Exception: Screen Inventory is not known.
 
 
 -- Full Traceback ------------------------------------------------------------
@@ -15,20 +15,20 @@ Exception: Screen KeyholeExhibitRoomScreen is not known.
 Full traceback:
   File "game/script.rpy", line 45, in script call
     call MyRoom from _call_MyRoom
-  File "game/script.rpy", line 80, in script
-    $ renpy.show_screen(current_room + "Screen")
+  File "game/script.rpy", line 81, in script
+    $ renpy.show_screen("Inventory")
   File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 928, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2245, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 80, in <module>
-    $ renpy.show_screen(current_room + "Screen")
+  File "game/script.rpy", line 81, in <module>
+    $ renpy.show_screen("Inventory")
   File "/Applications/renpy-7.4.11-sdk/renpy/display/screen.py", line 1131, in show_screen
     raise Exception("Screen %s is not known.\n" % (name[0],))
-Exception: Screen KeyholeExhibitRoomScreen is not known.
+Exception: Screen Inventory is not known.
 
 
 Darwin-22.5.0-x86_64-i386-64bit
 Ren'Py 7.4.11.2266
 After Hours at the Puzzle Museum 1.0
-Thu Jul 27 19:28:26 2023
+Sun Aug  6 09:25:32 2023
