@@ -109,6 +109,9 @@ image keyhole_exhibit_magazine = im.FactorScale("objects/keyhole_exhibit_room_ob
 image lobby_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Lobby_Door/png/Door_To_Lobby.png", 0.5)
 image keyhole_exhibit_table = im.FactorScale("objects/keyhole_exhibit_room_objects/Table/png/Table.png", 0.5)
 
+#inventory interaction_panel_resized
+image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png", 0.5)
+
 image security_screen_live_animation:
     "objects/keyhole_exhibit_room_objects/Security_Screen/Live_Overlay/animation/frame_01.png"
     pause 1
@@ -252,60 +255,6 @@ transform live_location:
 
 screen LobbyRoomScreen():
     add "lobby_background"
-    if not open_menu and not open_inventory:
-        imagebutton:
-            idle "dropdown_button_idle"
-            at dropdown_button_location
-            action [SensitiveIf(not inside_option), SetVariable("open_menu", True)]
-    if open_menu and not open_inventory:
-        imagebutton:
-            idle "dropdown_button_inversed_idle"
-            at open_dropdown_button_location
-            action [SensitiveIf(not inside_option), SetVariable("open_menu", False)]
-        imagebutton:
-            idle "user_interface_idle"
-            at open_user_interface_location
-        imagebutton:
-            auto "look_button_%s"
-            at open_look_button_location
-            action [SensitiveIf(not inside_option), SetVariable("active_action", "look"), SetVariable("selected_item", ''), SetVariable("option_text", "Look at what?")]
-        imagebutton:
-            auto "talk_button_%s"
-            at open_talk_button_location
-            action [SensitiveIf(not inside_option), SetVariable("active_action", "talk"), SetVariable("selected_item", ''), SetVariable("option_text", "Talk to what?")]
-        imagebutton:
-            auto "take_button_%s"
-            at open_take_button_location
-            action [SensitiveIf(not inside_option), SetVariable("active_action", "take"), SetVariable("selected_item", ''), SetVariable("option_text", "Take what?")]
-        imagebutton:
-            auto "inventory_button_%s"
-            at open_inventory_button_location
-            action [SensitiveIf(not inside_option), SetVariable("open_menu", False), SetVariable("open_inventory", True), SetVariable('active_action', ''), SetVariable('selected_item', ''), SetVariable('option_text', '')]
-    if open_inventory:
-        imagebutton:
-            idle "root_inventory_idle"
-            at root_inventory_menu_location
-        imagebutton:
-            idle "up_arrow_inventory_idle"
-            at up_arrow_inventory_location
-        imagebutton:
-            idle "down_arrow_inventory_idle"
-            at down_arrow_inventory_location
-        imagebutton:
-            idle "look_inventory_idle"
-            at look_inventory_location
-        imagebutton:
-            idle "use_inventory_idle"
-            at use_inventory_location
-        imagebutton:
-            idle "close_inventory_idle"
-            at close_inventory_location
-            action [SensitiveIf(in_room and not inside_option), SetVariable("open_inventory", False)]
-        for item in inventory:
-            imagebutton:
-                idle "{}_inventory_icon".format(item)
-                at inventory_spot(inventory.index(item))
-                action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]
     imagebutton:
         idle "keyhole_exhibit_door"
         at lefthand_door_location
@@ -322,9 +271,6 @@ screen LobbyRoomScreen():
     imagebutton:
         idle "car_room_door"
         at righthand_door_location
-
-screen KeyholeExhibitRoomScreen():
-    add "keyhole_exhibit_background"
     if not open_menu and not open_inventory:
         imagebutton:
             idle "dropdown_button_idle"
@@ -378,7 +324,10 @@ screen KeyholeExhibitRoomScreen():
             imagebutton:
                 idle "{}_inventory_icon".format(item)
                 at inventory_spot(inventory.index(item))
-                action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]
+                action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]        
+
+screen KeyholeExhibitRoomScreen():
+    add "keyhole_exhibit_background"
     imagebutton:
         idle "keyhole_exhibit_plaque"
         at plaque_location
@@ -407,6 +356,62 @@ screen KeyholeExhibitRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_nail_file"
         at keyhole_exhibit_nail_file_location
-    imagebutton:
-        idle "keyhole_exhibit_magazine"
-        at keyhole_exhibit_magazine_location
+    if not 'magazine' in inventory:
+        imagebutton:
+            idle "keyhole_exhibit_magazine"
+            at keyhole_exhibit_magazine_location
+            action [SensitiveIf(in_room and not inside_option), Jump("Magazine")]
+    if not open_menu and not open_inventory:
+        imagebutton:
+            idle "dropdown_button_idle"
+            at dropdown_button_location
+            action [SensitiveIf(not inside_option), SetVariable("open_menu", True)]
+    if open_menu and not open_inventory:
+        imagebutton:
+            idle "dropdown_button_inversed_idle"
+            at open_dropdown_button_location
+            action [SensitiveIf(not inside_option), SetVariable("open_menu", False)]
+        imagebutton:
+            idle "user_interface_idle"
+            at open_user_interface_location
+        imagebutton:
+            auto "look_button_%s"
+            at open_look_button_location
+            action [SensitiveIf(not inside_option), SetVariable("active_action", "look"), SetVariable("selected_item", ''), SetVariable("option_text", "Look at what?")]
+        imagebutton:
+            auto "talk_button_%s"
+            at open_talk_button_location
+            action [SensitiveIf(not inside_option), SetVariable("active_action", "talk"), SetVariable("selected_item", ''), SetVariable("option_text", "Talk to what?")]
+        imagebutton:
+            auto "take_button_%s"
+            at open_take_button_location
+            action [SensitiveIf(not inside_option), SetVariable("active_action", "take"), SetVariable("selected_item", ''), SetVariable("option_text", "Take what?")]
+        imagebutton:
+            auto "inventory_button_%s"
+            at open_inventory_button_location
+            action [SensitiveIf(not inside_option), SetVariable("open_menu", False), SetVariable("open_inventory", True), SetVariable('active_action', ''), SetVariable('selected_item', ''), SetVariable('option_text', '')]
+    if open_inventory:
+        imagebutton:
+            idle "root_inventory_idle"
+            at root_inventory_menu_location
+        imagebutton:
+            idle "up_arrow_inventory_idle"
+            at up_arrow_inventory_location
+        imagebutton:
+            idle "down_arrow_inventory_idle"
+            at down_arrow_inventory_location
+        imagebutton:
+            idle "look_inventory_idle"
+            at look_inventory_location
+        imagebutton:
+            idle "use_inventory_idle"
+            at use_inventory_location
+        imagebutton:
+            idle "close_inventory_idle"
+            at close_inventory_location
+            action [SensitiveIf(in_room and not inside_option), SetVariable("open_inventory", False)]
+        for item in inventory:
+            imagebutton:
+                idle "{}_inventory_icon".format(item)
+                at inventory_spot(inventory.index(item))
+                action [SensitiveIf(in_room and not inside_option), SetVariable("active_action", ""), SetVariable("open_inventory", False), SetVariable("selected_item", item), SetVariable("option_text", "Use {} with what?".format(item.capitalize().replace('_', ' ')))]

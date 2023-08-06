@@ -2,10 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/game_functions.rpy", line 11: invalid syntax
-        else if room == "KeyholeExhibitRoom":
-               ^
-    
+The label _call_handleObjectClickWrapUp_1 is defined twice, at File "game/script.rpy", line 176:
+    call handleObjectClickWrapUp from _call_handleObjectClickWrapUp_1
+and File "game/script.rpy", line 209:
+    call handleObjectClickWrapUp from _call_handleObjectClickWrapUp_1
+
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Thu Jul 27 19:27:39 2023
+Sun Aug  6 15:24:43 2023

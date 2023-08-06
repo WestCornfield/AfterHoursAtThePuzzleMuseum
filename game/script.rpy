@@ -173,6 +173,39 @@ label Magazine:
 
     $ inside_option = False
 
+    call handleObjectClickWrapUp
+
+    jump MyRoom
+
+label TakeMagazine:
+    e "You lean forward and snatch the magazine off the desk."
+
+    $ inventory.append('magazine')
+
+    e "The magazine is now in your inventory!"
+
+    return
+
+label SecurityScreen:
+    call handleObjectClick
+
+    if active_action == 'take' or active_action == '':
+        e "Unfortunately, the screen is screwed into the wall..."
+        e "You cannot take it."
+
+    elif active_action == 'look':
+        e "Embedded in the wall, there's a screen."
+        e "...Hey! It looks on the other side of the door..."
+        e "Is a key!"
+        e "...But, how can you get it?"
+
+    elif active_action == 'talk':
+        e "'Salutations!' you say, extending your hand!"
+        e "..."
+        e "Rudely, the live feed blinks without saying a word."
+
+    $ inside_option = False
+
     call handleObjectClickWrapUp from _call_handleObjectClickWrapUp_1
 
     jump MyRoom
