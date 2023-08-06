@@ -103,11 +103,18 @@ image keyhole_exhibit_plaque = im.FactorScale("objects/keyhole_exhibit_room_obje
 image keyhole_exhibit_lock = im.FactorScale("objects/keyhole_exhibit_room_objects/Lock/png/Lock.png", 0.5)
 image keyhole_exhibit_locked_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Wooden_Door/png/Door_with_Lock.png", 0.5)
 image keyhole_exhibit_magazine_indicator = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine_Indicator/png/Magazine_Indicator.png", 0.5)
-image keyhole_exhibit_security_screen = im.FactorScale("objects/keyhole_exhibit_room_objects/Security_Screen/png/frame_01.png", 0.5)
+image keyhole_exhibit_security_screen = im.FactorScale("objects/keyhole_exhibit_room_objects/Security_Screen/png/with_key/security_screen.png", 0.5)
 image keyhole_exhibit_nail_file = im.FactorScale("objects/keyhole_exhibit_room_objects/Nail_File/png/Nail_File.png", 0.5)
 image keyhole_exhibit_magazine = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine/png/magazine.png", 0.5)
 image lobby_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Lobby_Door/png/Door_To_Lobby.png", 0.5)
 image keyhole_exhibit_table = im.FactorScale("objects/keyhole_exhibit_room_objects/Table/png/Table.png", 0.5)
+
+image security_screen_live_animation:
+    "objects/keyhole_exhibit_room_objects/Security_Screen/Live_Overlay/animation/frame_01.png"
+    pause 1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/Live_Overlay/animation/frame_02.png"
+    pause 1
+    repeat
 
 #UI inventory transforms
 transform dropdown_button_location:
@@ -238,6 +245,10 @@ transform keyhole_exhibit_nail_file_location:
 transform keyhole_exhibit_magazine_location:
     ypos 400
     xpos 850
+
+transform live_location:
+    ypos 260
+    xpos 790
 
 screen LobbyRoomScreen():
     add "lobby_background"
@@ -387,6 +398,9 @@ screen KeyholeExhibitRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_security_screen"
         at keyhole_exhibit_security_location
+    imagebutton:
+        idle "security_screen_live_animation"
+        at live_location
     imagebutton:
         idle "keyhole_exhibit_table"
         at keyhole_exhibit_table_location
