@@ -107,7 +107,6 @@ label handleObjectClick:
 label handleObjectClickWrapUp:
     $ active_action = ''
     $ selected_item = ''
-    $ option_text = ''
     return
 
 label handleTalkClick:
