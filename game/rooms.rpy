@@ -335,6 +335,7 @@ screen KeyholeExhibitRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_plaque"
         at plaque_location
+        action [SensitiveIf(in_room and not inside_option), Jump("Plaque")]
     imagebutton:
         idle "lobby_door"
         at righthand_door_location_2

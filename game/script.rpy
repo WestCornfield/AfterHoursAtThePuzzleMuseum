@@ -197,6 +197,49 @@ label NailFile:
 
     jump MyRoom
 
+label Plaque:
+    call handleObjectClick
+
+    if active_action == '':
+        e "On the wall beside the door is a plaque."
+        menu:
+            "Read the plaque":
+                call ReadPlaque
+            "Don't read the plaque ":
+                call DontReadPlaque
+
+    elif active_action == 'take':
+        e "The plaque is engraved into the wall."
+        e "Unfortunately, you cannot take it."
+
+    elif active_action == 'look':
+        e "You lean forward to read the plaque..."
+        call ReadPlaque
+
+    elif active_action == 'talk':
+        e "'Salutations!' you say, extending your hand!"
+        e "..."
+        e "Unfortunately, the plaque is great at informing other people..."
+        e "But tragically uninterested in listening."
+
+    $ inside_option = False
+
+    call handleObjectClickWrapUp
+
+    jump MyRoom
+
+label ReadPlaque:
+    e "You decide to read the plaque."
+    e "..."
+    e "Wait, you're illiterate."
+    e "JK, adding this in a minte..."  
+
+label DontReadPlaque:
+    e "You decide not to read the plaque."
+    e "Reading is for nerds."
+
+    return
+
 label TakeMagazine:
     e "You lean forward and snatch the magazine off the desk."
 
