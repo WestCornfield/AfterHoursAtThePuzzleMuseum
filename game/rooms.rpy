@@ -111,6 +111,7 @@ image keyhole_exhibit_table = im.FactorScale("objects/keyhole_exhibit_room_objec
 
 #inventory interaction_panel_resized
 image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png", 0.5)
+image nail_file_inventory_icon = im.FactorScale("user_interface/inventory/icons/nail_file/idle/Nail_File.png", 0.5)
 
 image security_screen_live_animation:
     "objects/keyhole_exhibit_room_objects/Security_Screen/Live_Overlay/animation/frame_01.png"
@@ -356,9 +357,11 @@ screen KeyholeExhibitRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_table"
         at keyhole_exhibit_table_location
-    imagebutton:
-        idle "keyhole_exhibit_nail_file"
-        at keyhole_exhibit_nail_file_location
+    if not 'nail_file' in inventory:
+        imagebutton:
+            idle "keyhole_exhibit_nail_file"
+            at keyhole_exhibit_nail_file_location
+            action [SensitiveIf(in_room and not inside_option), Jump("NailFile")]
     if not 'magazine' in inventory:
         imagebutton:
             idle "keyhole_exhibit_magazine"

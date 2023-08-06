@@ -176,12 +176,42 @@ label Magazine:
 
     jump MyRoom
 
+label NailFile:
+    call handleObjectClick
+
+    if active_action == 'take' or active_action == '':
+        call TakeNailFile
+
+    elif active_action == 'look':
+        e "On the table in the puzzle room, there's a nail file."
+        e "Thin and long."
+
+    elif active_action == 'talk':
+        e "'Salutations!' you say, extending your hand!"
+        e "..."
+        e "Rudely, the nail file sharply rejects your greeting."
+
+    $ inside_option = False
+
+    call handleObjectClickWrapUp
+
+    jump MyRoom
+
 label TakeMagazine:
     e "You lean forward and snatch the magazine off the desk."
 
     $ inventory.append('magazine')
 
     e "The magazine is now in your inventory!"
+
+    return
+
+label TakeNailFile:
+    e "You lean forward and snatch the nail file off the desk."
+
+    $ inventory.append('nail_file')
+
+    e "The nail file is now in your inventory!"
 
     return
 
