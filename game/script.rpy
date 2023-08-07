@@ -108,6 +108,7 @@ label handleObjectClick:
 label handleObjectClickWrapUp:
     $ active_action = ''
     $ selected_item = ''
+    $ option_text = ''
     return
 
 label handleTalkClick:
@@ -197,6 +198,39 @@ label NailFile:
     call handleObjectClickWrapUp
 
     jump MyRoom
+
+label Lock:
+    call handleObjectClick
+
+    if selected_item == 'nail_file':
+        if magazine_slid and lock_waxy:
+            e "Aha! Very clever!"
+            e "With the magazine slid into proper position, you gently slide the file into the lock."
+            e "..."
+            e "You twist up and down."
+            e "..."
+            e "What the?!?"
+            e "Despite your best efforts, you don't hear a metallic plunk of a key falling out of a lock!"
+            e "Should you take a closer look at the lock?"
+
+    if active_action == 'take' or active_action == '':
+        e "The lock is part of the door."
+        e "Despite your best efforts, you can't pull it off."
+
+    elif active_action == 'look':
+        e "You bring your eye up to the lock."
+        e "Ah! What the?!?!"
+        e "The lock is full of wax!"
+        e "...I mean, this is an exhibit at a museum."
+        e "I guess it's more of a display than a demo."
+        e "Still! Unless you melt the wax, it's too thick to jimmy the key out of the door."
+
+    elif active_action == 'talk':
+        e "You lean into the lock and whisper your deepest darkest secret."
+        e "..."
+        e "The lock doesn't speak it. And never will."
+        e "A true friend."
+
 
 label Plaque:
     call handleObjectClick
@@ -306,7 +340,7 @@ label SlidMagazine:
     call handleObjectClick
 
     if active_action == 'take' :
-        $ inventory.apped('magazine')
+        $ inventory.append('magazine')
         $ magazine_slid = False
         e "You scoop the magazine back up off the floor."
 

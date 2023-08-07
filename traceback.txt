@@ -3,30 +3,28 @@
 While running game code:
   File "game/script.rpy", line 46, in script call
     call MyRoom from _call_MyRoom
-  File "game/script.rpy", line 281, in script
-    $ inventory.remove('magazine')
-  File "game/script.rpy", line 281, in <module>
-    $ inventory.remove('magazine')
-ValueError: list.remove(x): x not in list
+  File "game/script.rpy", line 309, in script
+    $ inventory.apped('magazine')
+  File "game/script.rpy", line 309, in <module>
+    $ inventory.apped('magazine')
+AttributeError: 'RevertableList' object has no attribute 'apped'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
   File "game/script.rpy", line 46, in script call
     call MyRoom from _call_MyRoom
-  File "game/script.rpy", line 281, in script
-    $ inventory.remove('magazine')
+  File "game/script.rpy", line 309, in script
+    $ inventory.apped('magazine')
   File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 928, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2245, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 281, in <module>
-    $ inventory.remove('magazine')
-  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 875, in do_mutation
-    return method(self, *args, **kwargs)
-ValueError: list.remove(x): x not in list
+  File "game/script.rpy", line 309, in <module>
+    $ inventory.apped('magazine')
+AttributeError: 'RevertableList' object has no attribute 'apped'
 
 Darwin-22.5.0-x86_64-i386-64bit
 Ren'Py 7.4.11.2266
 After Hours at the Puzzle Museum 1.0
-Sun Aug  6 20:37:03 2023
+Sun Aug  6 21:04:15 2023
