@@ -2,11 +2,11 @@
 errors listed below, and try again.
 
 
-The label _call_handleObjectClickWrapUp_1 is defined twice, at File "game/script.rpy", line 176:
+The label _call_handleObjectClickWrapUp_1 is defined twice, at File "game/script.rpy", line 299:
     call handleObjectClickWrapUp from _call_handleObjectClickWrapUp_1
-and File "game/script.rpy", line 209:
+and File "game/script.rpy", line 348:
     call handleObjectClickWrapUp from _call_handleObjectClickWrapUp_1
 
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sun Aug  6 15:24:43 2023
+Sun Aug  6 20:25:10 2023

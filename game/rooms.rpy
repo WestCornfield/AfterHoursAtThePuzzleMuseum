@@ -108,6 +108,7 @@ image keyhole_exhibit_nail_file = im.FactorScale("objects/keyhole_exhibit_room_o
 image keyhole_exhibit_magazine = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine/png/magazine.png", 0.5)
 image lobby_door = im.FactorScale("objects/keyhole_exhibit_room_objects/Lobby_Door/png/Door_To_Lobby.png", 0.5)
 image keyhole_exhibit_table = im.FactorScale("objects/keyhole_exhibit_room_objects/Table/png/Table.png", 0.5)
+image slid_magazine = im.FactorScale("objects/keyhole_exhibit_room_objects/Magazine/Slid/png/magazine.png", 1.5)
 
 #inventory interaction_panel_resized
 image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png", 0.5)
@@ -226,6 +227,10 @@ transform keyhole_exhibit_locked_door_location:
     ypos 220
     xpos 530
 
+transform slid_magazine_location:
+    ypos 516
+    xpos 570
+
 transform keyhole_exhibit_lock_location:
     ypos 380
     xpos 570
@@ -343,15 +348,22 @@ screen KeyholeExhibitRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_locked_door"
         at keyhole_exhibit_locked_door_location
+    if magazine_slid:
+        imagebutton:
+            idle "slid_magazine"
+            at slid_magazine_location
+            action [SensitiveIf(in_room and not inside_option), Jump("SlidMagazine")]
     imagebutton:
         idle "keyhole_exhibit_lock"
         at keyhole_exhibit_lock_location
     imagebutton:
         idle "keyhole_exhibit_magazine_indicator"
         at magazine_indicator_location
+        action [SensitiveIf(in_room and not inside_option), Jump("MagazineIndicator")]
     imagebutton:
         idle "keyhole_exhibit_security_screen"
         at keyhole_exhibit_security_location
+        action [SensitiveIf(in_room and not inside_option), Jump("SecurityScreen")]
     imagebutton:
         idle "security_screen_live_animation"
         at live_location
@@ -363,7 +375,7 @@ screen KeyholeExhibitRoomScreen():
             idle "keyhole_exhibit_nail_file"
             at keyhole_exhibit_nail_file_location
             action [SensitiveIf(in_room and not inside_option), Jump("NailFile")]
-    if not 'magazine' in inventory:
+    if not 'magazine' in inventory and not magazine_slid:
         imagebutton:
             idle "keyhole_exhibit_magazine"
             at keyhole_exhibit_magazine_location

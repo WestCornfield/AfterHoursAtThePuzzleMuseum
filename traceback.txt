@@ -1,34 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/rooms.rpy", line 113, in script
-    image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png")
-  File "game/rooms.rpy", line 113, in script
-    image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png")
-  File "game/rooms.rpy", line 113, in <module>
-    image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png")
-TypeError: __init__() takes at least 3 arguments (2 given)
+  File "game/script.rpy", line 46, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 281, in script
+    $ inventory.remove('magazine')
+  File "game/script.rpy", line 281, in <module>
+    $ inventory.remove('magazine')
+ValueError: list.remove(x): x not in list
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "/Applications/renpy-7.4.11-sdk/renpy/bootstrap.py", line 331, in bootstrap
-    renpy.main.main()
-  File "/Applications/renpy-7.4.11-sdk/renpy/main.py", line 560, in main
-    renpy.game.context().run(node)
-  File "game/rooms.rpy", line 113, in script
-    image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png")
-  File "game/rooms.rpy", line 113, in script
-    image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png")
-  File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 1027, in execute
-    img = renpy.python.py_eval_bytecode(self.code.bytecode)
-  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2269, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/rooms.rpy", line 113, in <module>
-    image magazine_inventory_icon = im.FactorScale("user_interface/inventory/icons/magazine/magazine.png")
-TypeError: __init__() takes at least 3 arguments (2 given)
+  File "game/script.rpy", line 46, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 281, in script
+    $ inventory.remove('magazine')
+  File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 928, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2245, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 281, in <module>
+    $ inventory.remove('magazine')
+  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 875, in do_mutation
+    return method(self, *args, **kwargs)
+ValueError: list.remove(x): x not in list
 
 Darwin-22.5.0-x86_64-i386-64bit
 Ren'Py 7.4.11.2266
 After Hours at the Puzzle Museum 1.0
-Sun Aug  6 15:29:31 2023
+Sun Aug  6 20:37:03 2023

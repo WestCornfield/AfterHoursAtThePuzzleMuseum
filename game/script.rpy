@@ -23,6 +23,7 @@ define wall_smashed = False
 define nail_removed = False
 define scroll_read = False
 define broke_mirror = False
+define magazine_slid = False
 
 define open_menu = False
 define open_inventory = False
@@ -202,6 +203,11 @@ label Plaque:
 
     if active_action == '':
         e "On the wall beside the door is a plaque."
+        e "A beautiful, marble plaque."
+        e "You admire the plaque for an extended period of time, perhaps too long."
+        e "But perhaps not? After all, shouldn't we enjoy the beauty in the simple things we come across every day?"
+        e "The plaque also has words that you can read, if you so desired. But, take your time, for the plaque itself is a marvel to behold."
+
         menu:
             "Read the plaque":
                 call ReadPlaque
@@ -230,9 +236,19 @@ label Plaque:
 
 label ReadPlaque:
     e "You decide to read the plaque."
-    e "..."
-    e "Wait, you're illiterate."
-    e "JK, adding this in a minte..."  
+    e "It reads..."
+    e "{b}THE KEYHOLE NEWSPAPER TRICK{/b}"
+    e "An old classic."
+    e "The adventurer stumbles on a locked door."
+    e "On the other side of the door is the key that unlocks the door, stuck inside the keyhole."
+    e "What's an adventurer to do?"
+    e "The answer was first discovered by adventurer Wendell Q. Willowswether in 1795 after observing his wife, fellow adventurer Wendy J. Willoswether use this technique."
+    e "Simply slide a newspaper* part-ways under the door, then pop the key out of the keyhole using a thin bit of metal, like a lockpick or a file."
+    e "Once the key is dislodged, it will land on the newspaper. Carefully retrieve the newspaper and voila! The key is yours!"
+    e "*Unfortunately, we've had to replace our newspaper so many times, as attendees of the puzzle museum tend to steal it to check and see if the crossword puzzles have already been done."
+    e "You'll instead find beside the door a copy of Enigma Fathomers Quarterly, which has no crossword puzzle."
+    e "We apologize for the exhibit's subsequent inauthenticity."
+
 
 label DontReadPlaque:
     e "You decide not to read the plaque."
@@ -258,14 +274,67 @@ label TakeNailFile:
 
     return
 
+label MagazineIndicator:
+    call handleObjectClick
+
+    if selected_item == 'magazine':
+        $ inventory.remove('magazine')
+        $ magazine_slid = True
+        e "You slide the magazine into place under the door..."
+
+    elif active_action == 'take':
+        e "Unfortunately, the drawing is... a drawing."
+        e "You cannot take it."
+
+    elif active_action == 'look' or active_action == '':
+        e "There's a sketch of a magazine on the ground."
+        e "With an arrow pointing forward, toward the gap between the door and the floor."
+        e "Hmm... Almost like you could *do* something, based on this oh-so-subtle hint."
+
+    elif active_action == 'talk':
+        e "'Salutations!' you say, extending your hand!"
+        e "..."
+        e "Rudely, the drawing's arrow refuses to turn your direction."
+
+    $ inside_option = False
+
+    call handleObjectClickWrapUp
+
+    jump MyRoom
+
+label SlidMagazine:
+    call handleObjectClick
+
+    if active_action == 'take' :
+        $ inventory.apped('magazine')
+        $ magazine_slid = False
+        e "You scoop the magazine back up off the floor."
+
+    elif active_action == 'look' or active_action == '':
+        e "It's a little hard to read the magazine from the floor."
+        e "You could, I suppose, turn the page with your shoe, but that would dirty the magazine."
+        e "..."
+        e "Nice cover, though."
+
+    elif active_action == 'talk':
+        e "'Salutations!' you say, extending your hand!"
+        e "..."
+        e "Rudely, the magazine lies there, pretending it can't hear you."
+
+    $ inside_option = False
+
+    call handleObjectClickWrapUp
+
+    jump MyRoom
+
 label SecurityScreen:
     call handleObjectClick
 
-    if active_action == 'take' or active_action == '':
+    if active_action == 'take' :
         e "Unfortunately, the screen is screwed into the wall..."
         e "You cannot take it."
 
-    elif active_action == 'look':
+    elif active_action == 'look' or active_action == '':
         e "Embedded in the wall, there's a screen."
         e "...Hey! It looks on the other side of the door..."
         e "Is a key!"
