@@ -95,7 +95,7 @@ image keyhole_exhibit_background = im.FactorScale("rooms/Keyhole_Exhibit_Room/pn
 image keyhole_exhibit_door = im.FactorScale("objects/lobby_room_objects/Keyhole_Exhibit_Room_Door/png/Keybole_Exhibit_Room_With_Magazine.png", 0.5)
 image office_door = im.FactorScale("objects/lobby_room_objects/Office_Door/png/Office_Door.png", 0.5)
 image debbie_desk = im.FactorScale("objects/lobby_room_objects/Debbie_Desk/png/Debbie_Desk.png", 0.5)
-image lost_box = im.FactorScale("objects/lobby_room_objects/Lost_Box/png/Lost_Box.png", 0.5)
+image banned_items_box = im.FactorScale("objects/lobby_room_objects/Lost_Box/png/Banned_Items_Box.png", 1.0)
 image car_room_door = im.FactorScale("objects/lobby_room_objects/Car_Room_Door/png/Car_Room_Door.png", 0.5)
 
 #keyhole exhibit
@@ -216,7 +216,7 @@ transform debbie_desk_location:
     xpos 578
 
 transform lost_box_location:
-    ypos 244
+    ypos 264
     xpos 768
 
 transform plaque_location:
@@ -272,7 +272,7 @@ screen LobbyRoomScreen():
         idle "debbie_desk"
         at debbie_desk_location
     imagebutton:
-        idle "lost_box"
+        idle "banned_items_box"
         at lost_box_location
     imagebutton:
         idle "car_room_door"
@@ -356,6 +356,7 @@ screen KeyholeExhibitRoomScreen():
     imagebutton:
         idle "keyhole_exhibit_lock"
         at keyhole_exhibit_lock_location
+        action [SensitiveIf(in_room and not inside_option), Jump("Lock")]
     imagebutton:
         idle "keyhole_exhibit_magazine_indicator"
         at magazine_indicator_location

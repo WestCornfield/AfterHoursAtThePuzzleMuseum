@@ -18,15 +18,12 @@ define audio.glass_break = "audio/sounds/glass_break.mp3"
 
 define inventory = []
 define inside_option = False
-define mirror_placed = False
-define wall_smashed = False
-define nail_removed = False
-define scroll_read = False
-define broke_mirror = False
 define magazine_slid = False
+define lock_waxy = True
 
 define open_menu = False
 define open_inventory = False
+define starting_sequence = True
 define active_action = ''
 define selected_item = ''
 define option_text = ''
@@ -39,7 +36,9 @@ define gameOver = False
 # The game starts here.
 
 label start:
-    call Setup
+    if starting_sequence == True:
+        call Setup
+        $ starting_sequence = False
 
     #Call the first scene
     $ current_room = "LobbyRoom"
@@ -203,7 +202,15 @@ label Lock:
     call handleObjectClick
 
     if selected_item == 'nail_file':
-        if magazine_slid and lock_waxy:
+        if not magazine_slid:
+            e "Oh! Brilliant!"
+            e "You'll jam the nail file into the lock to unblock the key!"
+            e "Then, it'll be out of the lock and..."
+            e "On the... other side of the locked door."
+            e "...Hmm."
+            e "Great idea, but..."
+            e "How can we make sure that we'll catch the key AFTER we knock it out of the lock."
+        elif lock_waxy:
             e "Aha! Very clever!"
             e "With the magazine slid into proper position, you gently slide the file into the lock."
             e "..."
@@ -212,8 +219,17 @@ label Lock:
             e "What the?!?"
             e "Despite your best efforts, you don't hear a metallic plunk of a key falling out of a lock!"
             e "Should you take a closer look at the lock?"
+        else:
+            e "Yes!"
+            e "The wax is melted enough to punch through!"
+            e "The magazine is in place!"
+            e "All that's left..."
+            e "..."
+            e "YES! Effortlessly, the key pops out of the lock!"
+            e "You hear a metallic tink on the other side of the door..."
+            e "And the smack of something hitting magazine paper!"
 
-    if active_action == 'take' or active_action == '':
+    elif active_action == 'take' or active_action == '':
         e "The lock is part of the door."
         e "Despite your best efforts, you can't pull it off."
 
@@ -230,6 +246,12 @@ label Lock:
         e "..."
         e "The lock doesn't speak it. And never will."
         e "A true friend."
+
+    $ inside_option = False
+
+    call handleObjectClickWrapUp    
+
+    jump MyRoom
 
 
 label Plaque:
@@ -282,6 +304,8 @@ label ReadPlaque:
     e "*Unfortunately, we've had to replace our newspaper so many times, as attendees of the puzzle museum tend to steal it to check and see if the crossword puzzles have already been done."
     e "You'll instead find beside the door a copy of Enigma Fathomers Quarterly, which has no crossword puzzle."
     e "We apologize for the exhibit's subsequent inauthenticity."
+
+    return
 
 
 label DontReadPlaque:
@@ -398,10 +422,10 @@ label LobbyDoor:
     jump MyRoom
 
 label EnterKeyholeExhibitRoom:
-    e "You wake up in a mysterious room."
-    e "You don't remember how you arrived here. But..."
-    e "Or, perhaps, *because* you can't remember..."
-    e "You decide you'd like to leave."
+    # e "You wake up in a mysterious room."
+    # e "You don't remember how you arrived here. But..."
+    # e "Or, perhaps, *because* you can't remember..."
+    # e "You decide you'd like to leave."
 
     return
 

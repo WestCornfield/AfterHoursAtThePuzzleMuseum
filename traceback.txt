@@ -1,30 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 46, in script call
+  File "game/script.rpy", line 45, in script call
     call MyRoom from _call_MyRoom
-  File "game/script.rpy", line 309, in script
-    $ inventory.apped('magazine')
-  File "game/script.rpy", line 309, in <module>
-    $ inventory.apped('magazine')
-AttributeError: 'RevertableList' object has no attribute 'apped'
+  File "game/script.rpy", line 93, in script
+    $ renpy.call_screen(current_room + "Screen")
+ScriptError: could not find label 'ExhibitLock'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 46, in script call
+  File "/Applications/renpy-7.4.11-sdk/renpy/bootstrap.py", line 331, in bootstrap
+    renpy.main.main()
+  File "/Applications/renpy-7.4.11-sdk/renpy/main.py", line 662, in main
+    run(restart)
+  File "/Applications/renpy-7.4.11-sdk/renpy/main.py", line 148, in run
+    renpy.execution.run_context(True)
+  File "/Applications/renpy-7.4.11-sdk/renpy/execution.py", line 922, in run_context
+    context.run()
+  File "game/script.rpy", line 45, in script call
     call MyRoom from _call_MyRoom
-  File "game/script.rpy", line 309, in script
-    $ inventory.apped('magazine')
-  File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 928, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2245, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 309, in <module>
-    $ inventory.apped('magazine')
-AttributeError: 'RevertableList' object has no attribute 'apped'
+  File "game/script.rpy", line 93, in script
+    $ renpy.call_screen(current_room + "Screen")
+  File "/Applications/renpy-7.4.11-sdk/renpy/script.py", line 918, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'ExhibitLock'.
 
-Darwin-22.5.0-x86_64-i386-64bit
+Darwin-23.5.0-x86_64-i386-64bit
 Ren'Py 7.4.11.2266
 After Hours at the Puzzle Museum 1.0
-Sun Aug  6 21:04:15 2023
+Thu Jul  4 09:29:04 2024
