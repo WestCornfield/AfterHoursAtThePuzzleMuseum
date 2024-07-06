@@ -83,6 +83,7 @@ image hammer_inventory_icon = "user_interface/inventory/icons/hammer/idle/hammer
 image mirror_inventory_icon = "user_interface/inventory/icons/mirror/idle/mirror.png"
 image broken_mirror_inventory_icon = "user_interface/inventory/icons/broken_mirror/idle/broken_mirror.png"
 image nail_inventory_icon = "user_interface/inventory/icons/nail/idle/nail.png"
+image lighter_icon = "user_interface/inventory/icons/lighter/idle/lighter.png"
 
 #backgrounds
 #image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
@@ -97,6 +98,7 @@ image office_door = im.FactorScale("objects/lobby_room_objects/Office_Door/png/O
 image debbie_desk = im.FactorScale("objects/lobby_room_objects/Debbie_Desk/png/Debbie_Desk.png", 0.5)
 image banned_items_box = im.FactorScale("objects/lobby_room_objects/Lost_Box/png/Banned_Items_Box.png", 1.0)
 image car_room_door = im.FactorScale("objects/lobby_room_objects/Car_Room_Door/png/Car_Room_Door.png", 0.5)
+image lighter = im.FactorScale("objects/lobby_room_objects/Lighter/png/idle/idle.png", 0.25)
 
 #keyhole exhibit
 image keyhole_exhibit_plaque = im.FactorScale("objects/keyhole_exhibit_room_objects/Plaque/png/Plaque.png", 0.5)
@@ -259,6 +261,10 @@ transform live_location:
     ypos 260
     xpos 790
 
+transform lighter_location:
+    ypos 309
+    xpos 668
+
 screen LobbyRoomScreen():
     add "lobby_background"
     imagebutton:
@@ -274,6 +280,12 @@ screen LobbyRoomScreen():
     imagebutton:
         idle "banned_items_box"
         at lost_box_location
+        action [SensitiveIf(in_room and not inside_option), Jump("BannedItemsBox")]
+    if unpacked_box and not 'lighter' in inventory:
+        imagebutton:
+            idle "lighter"
+            at lighter_location
+            action [SensitiveIf(in_room and not inside_option), Jump("Lighter")]
     imagebutton:
         idle "car_room_door"
         at righthand_door_location

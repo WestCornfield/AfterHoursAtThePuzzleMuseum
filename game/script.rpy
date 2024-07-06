@@ -20,6 +20,7 @@ define inventory = []
 define inside_option = False
 define magazine_slid = False
 define lock_waxy = True
+define unpacked_box = False
 
 define open_menu = False
 define open_inventory = False
@@ -249,7 +250,7 @@ label Lock:
 
     $ inside_option = False
 
-    call handleObjectClickWrapUp    
+    call handleObjectClickWrapUp
 
     jump MyRoom
 
@@ -428,6 +429,64 @@ label EnterKeyholeExhibitRoom:
     # e "You decide you'd like to leave."
 
     return
+
+label BannedItemsBox:
+    call handleObjectClick
+
+    if active_action == 'take' :
+        #e "Unfortunately, the screen is screwed into the wall..."
+        #e "You cannot take it."
+        e "You reach your arm in the Banned Items Box..."
+        e "..."
+        e "It's pretty empty..."
+        e "OH!"
+        $ unpacked_box = True
+        e "Inside the box, you find a lighter!"
+
+    elif active_action == 'look' or active_action == '':
+        e "This is one of the only things Debbie explained to you about the museum."
+        e "The Banned Items Box!"
+        e "Allegedly, there's a community of enthusiasts that try to..."
+        e "Er..."
+        e "'Speedrun' the museum?"
+        e "This led to an escalating sequence of museum visitors bringing increasingly ridiculous items to try and 'sequence break' the museum."
+        e "Apparently, they incinerate the box contents at the end of the day..."
+        e "But, maybe something's still there?"
+
+    elif active_action == 'talk':
+        e "'Salutations!' you say, extending your hand!"
+        e "..."
+        e "Tragically, the Banned Items Box withholds its secrets from you."
+
+    $ inside_option = False
+
+    call handleObjectClickWrapUp
+
+    jump MyRoom
+
+label Lighter:
+    call handleObjectClick
+
+    if active_action == 'take' :
+        e "You take the lighter off the desk.."
+        $ inventory.append('lighter')
+        e "The lighter is now in your inventory!"
+
+    elif active_action == 'look' or active_action == '':
+        e "It looks like a lighter..."
+        e "And I will add more detail later!"
+        #add detail here
+
+    elif active_action == 'talk':
+        e "'Salutations!' you say, extending your hand!"
+        e "..."
+        e "The lighter's silence leaves you cold."
+
+    $ inside_option = False
+
+    call handleObjectClickWrapUp
+
+    jump MyRoom
 
 label EnterLobbyRoom:
     e "Front door's locked."
