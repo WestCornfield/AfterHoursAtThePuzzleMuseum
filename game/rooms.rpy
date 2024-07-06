@@ -83,7 +83,7 @@ image hammer_inventory_icon = "user_interface/inventory/icons/hammer/idle/hammer
 image mirror_inventory_icon = "user_interface/inventory/icons/mirror/idle/mirror.png"
 image broken_mirror_inventory_icon = "user_interface/inventory/icons/broken_mirror/idle/broken_mirror.png"
 image nail_inventory_icon = "user_interface/inventory/icons/nail/idle/nail.png"
-image lighter_icon = "user_interface/inventory/icons/lighter/idle/lighter.png"
+image lighter_inventory_icon = "user_interface/inventory/icons/lighter/idle/idle.png"
 
 #backgrounds
 #image lobby_background = im.FactorScale("rooms/Lobby_Room/png/Lobby_default.png", 0.5)
