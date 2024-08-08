@@ -230,6 +230,14 @@ label Lock:
             e "You hear a metallic tink on the other side of the door..."
             e "And the smack of something hitting magazine paper!"
 
+    elif selected_item == 'lighter':
+        if lock_waxy:
+            e "Success! The wax melts away!"
+            $ lock_waxy = False
+        else:
+            e "Okay, now you're just showing off."
+            e "The wax is already completely melted."
+
     elif active_action == 'take' or active_action == '':
         e "The lock is part of the door."
         e "Despite your best efforts, you can't pull it off."
@@ -473,9 +481,8 @@ label Lighter:
         e "The lighter is now in your inventory!"
 
     elif active_action == 'look' or active_action == '':
-        e "It looks like a lighter..."
-        e "And I will add more detail later!"
-        #add detail here
+        e "An official Puzzle Museum lighter!"
+        e "As found in the gift shop!"
 
     elif active_action == 'talk':
         e "'Salutations!' you say, extending your hand!"

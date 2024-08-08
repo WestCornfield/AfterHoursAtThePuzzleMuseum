@@ -1,38 +1,104 @@
-Fri Jul  5 20:47:22 2024
-Darwin-23.5.0-x86_64-i386-64bit
+Wed Aug  7 19:36:44 2024
+Darwin-23.6.0-x86_64-i386-64bit
 Ren'Py 7.4.11.2266
  
 
-Bootstrap to the start of init.init took 0.13s
-Early init took 0.01s
-Loader init took 0.09s
-Loading error handling took 0.05s
-Loading script took 0.41s
+Bootstrap to the start of init.init took 0.12s
+Early init took 0.00s
+Loader init took 0.12s
+Loading error handling took 0.08s
+Loading script took 1.21s
 Loading save slot metadata. took 0.03s
-Loading persistent took 0.00s
+Loading persistent took 0.01s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.10s
+Running init code took 0.22s
 Loading analysis data took 0.03s
 Analyze and compile ATL took 0.01s
 Index archives took 0.00s
-Dump and make backups. took 0.08s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.09s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc. took 0.04s
+Initial gc. took 0.03s
 DPI scale factor: 1.000000
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.05s
 Build styles took 0.01s
-Load screen analysis took 0.03s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.13s
+Load screen analysis took 0.01s
+Analyze screens took 0.02s
+Save screen analysis took 0.04s
+Prepare screens took 0.12s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.04s
+Save bytecode. took 0.03s
 Running _start took 0.00s
 Performance test:
-Interface start took 1.28s
+Interface start took 0.84s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1440, 900)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'Intel Inc.'
+Renderer: 'Intel(R) Iris(TM) Plus Graphics 655'
+Version: '2.1 INTEL-22.5.11'
+Display Info: None
+Screen sizes: virtual=(1280, 720) physical=(1338, 753) drawable=(2676, 1506)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 46, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 236, in script
+    $ lock_waxy = false
+  File "/Applications/renpy-7.4.11-sdk/renpy/ast.py", line 928, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.11-sdk/renpy/python.py", line 2245, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 236, in <module>
+    $ lock_waxy = false
+NameError: name 'false' is not defined
+
+While running game code:
+  File "game/script.rpy", line 46, in script call
+    call MyRoom from _call_MyRoom
+  File "game/script.rpy", line 236, in script
+    $ lock_waxy = false
+  File "game/script.rpy", line 236, in <module>
+    $ lock_waxy = false
+NameError: name 'false' is not defined
+Resetting cache.
+Bootstrap to the start of init.init took 72.66s
+Early init took 0.00s
+Loader init took 0.07s
+Loading error handling took 0.03s
+Loading script took 0.27s
+Loading save slot metadata. took 0.03s
+Loading persistent took 0.00s
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.05s
+Loading analysis data took 0.03s
+Analyze and compile ATL took 0.01s
+Index archives took 0.00s
+Backing up script files to '/Users/johncorwin/Library/RenPy/backups/AfterHoursAtThePuzzleMuseum':
+Dump and make backups. took 0.09s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.01s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.04s
+Prepare screens took 0.11s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.13s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1440, 900)
