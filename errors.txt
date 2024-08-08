@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 231: Tab characters are not allowed in Ren'Py scripts.
+File "game/rooms.rpy", line 406: screen expects a non-empty block.
+    elif key_fallen:
+                    ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Wed Aug  7 19:32:08 2024
+Wed Aug  7 19:57:05 2024

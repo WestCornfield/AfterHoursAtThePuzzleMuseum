@@ -123,6 +123,30 @@ image security_screen_live_animation:
     pause 1
     repeat
 
+image security_screen_key_falling_animation:
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/key_falls/resized/frame_01.png"
+    pause 0.1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/key_falls/resized/frame_02.png"
+    pause 0.1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/key_falls/resized/frame_03.png"
+    pause 0.1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/key_falls/resized/frame_04.png"
+    pause 0.1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/key_falls/resized/frame_05.png"
+    pause 0.1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/key_falls/resized/frame_06.png"
+    pause 0.1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/key_falls/resized/frame_07.png"
+    pause 0.1
+
+image security_screen_live_no_key_animation:
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/no_key/resized/frame_01.png"
+    pause 1
+    "objects/keyhole_exhibit_room_objects/Security_Screen/animation/no_key/resized/frame_02.png"
+    pause 1
+    repeat
+
+
 #UI inventory transforms
 transform dropdown_button_location:
     ypos 0
@@ -257,6 +281,10 @@ transform keyhole_exhibit_magazine_location:
     ypos 400
     xpos 850
 
+transform screen_location:
+    ypos 220
+    xpos 735
+
 transform live_location:
     ypos 260
     xpos 790
@@ -380,6 +408,14 @@ screen KeyholeExhibitRoomScreen():
     imagebutton:
         idle "security_screen_live_animation"
         at live_location
+    if show_key_falling:
+        imagebutton:
+            idle "security_screen_key_falling_animation"
+            at screen_location
+    elif key_fallen:
+        imagebutton:
+            idle "security_screen_live_no_key_animation"
+            at screen_location
     imagebutton:
         idle "keyhole_exhibit_table"
         at keyhole_exhibit_table_location

@@ -21,6 +21,8 @@ define inside_option = False
 define magazine_slid = False
 define lock_waxy = True
 define unpacked_box = False
+define show_key_falling = False
+define key_fallen = False
 
 define open_menu = False
 define open_inventory = False
@@ -226,7 +228,10 @@ label Lock:
             e "The magazine is in place!"
             e "All that's left..."
             e "..."
+            $ show_key_falling = True
             e "YES! Effortlessly, the key pops out of the lock!"
+            $ show_key_falling = False
+            $ key_fallen = True
             e "You hear a metallic tink on the other side of the door..."
             e "And the smack of something hitting magazine paper!"
 
